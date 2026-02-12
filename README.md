@@ -1,2 +1,3 @@
-# romantic-hug-day-single-page-reveal-experience-landing-surprise-transition
-Exported from Caffeine project: Romantic Hug Day single-page reveal experience (landing + surprise transition)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

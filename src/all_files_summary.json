@@ -1,0 +1,16 @@
+{
+  "backend/main.mo": "Empty Motoko canister actor with no methods.",
+  "feature_evidence.json": "Feature report listing UX, audio, and visual updates tied to HugDayExperience.tsx.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing key frontend files and their roles in the Hug Day experience.",
+  "frontend/index.css": "Tailwind base theme with color tokens, dark mode variables, and global border/background utilities.",
+  "frontend/index.html": "HTML entry point mounting the SPA root and loading main.tsx.",
+  "frontend/src/App.tsx": "Renders the HugDayExperience component as the app root.",
+  "frontend/src/components/HugDayExperience.tsx": "Implements landing and reveal phases with animations, hero image, audio playback logic, and UI transitions.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages an authenticated or anonymous backend actor and refreshes dependent queries.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides Internet Identity auth context, login/logout handling, and identity persistence.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file exporting nothing.",
+  "frontend/src/index.css": "Romantic-themed Tailwind styles with fonts, color variables, dark mode, and animation utilities.",
+  "frontend/src/main.tsx": "Bootstraps React app with QueryClient and InternetIdentityProvider before rendering App.",
+  "frontend/tailwind.config.js": "Defines Tailwind configuration with custom colors, typography, animations, and plugins for typography, container queries, and animations.",
+  "project_state.json": "Stores project metadata, requirements, issues, and image editing tasks for a two-phase romantic Hug Day web experience."
+}

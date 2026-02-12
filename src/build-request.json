@@ -1,0 +1,114 @@
+{
+  "kind": "build_request",
+  "title": "Fix reveal background/audio issues and update teddy visuals (transparent hugging bears + heart-holding hero)",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "text": "Fix Phase 2 (Reveal) background image rendering so the user-uploaded background is clearly visible after the button click, using the existing asset path for the uploaded image (photo4.jpg).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-9"
+        ],
+        "quotes": [
+          "Why the song is not playing and also I can't see the background image",
+          "Background Change: The background should change to a custom uploaded image i uploaded."
+        ]
+      },
+      "acceptanceCriteria": [
+        "After clicking the Phase 1 button, the Reveal view displays the background image (photo4.jpg) behind the overlay and content on both mobile and desktop.",
+        "The background image request returns HTTP 200 in the browser network panel and is not blocked by an incorrect path.",
+        "The background image is not visually obscured by overlays; the overlay (if present) still allows the background to be recognizable."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Fix Phase 2 (Reveal) audio playback so the user-uploaded romantic song reliably loads and starts playing immediately after the button click, and provide a clear manual play fallback if autoplay is blocked.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4",
+          "msg-9"
+        ],
+        "quotes": [
+          "Why the song is not playing",
+          "Audio: Start playing a background romantic song which I uploaded"
+        ]
+      },
+      "acceptanceCriteria": [
+        "On button click, the app attempts to play the audio and sets the UI state to reflect playback when successful.",
+        "If autoplay is blocked, a visible play control appears and successfully starts playback on user interaction.",
+        "The audio file request returns HTTP 200 in the browser network panel (no 404/failed load due to filename/path issues).",
+        "Audio continues looping as intended, and the existing mute/play toggle continues to work after playback starts."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Update Phase 2 visuals to use a transparent (alpha) hugging-bears asset and ensure both the hugging-bears visual and the glassmorphism message card remain semi-transparent yet clearly readable over the background (i.e., transparent but still easy to see).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-9"
+        ],
+        "quotes": [
+          "New Visuals: Display a cute transparent animation or transparent image of a male and female bear hugging each other.",
+          "But the animation and message should be transparent but seen and I want the image toh be shown properly."
+        ]
+      },
+      "acceptanceCriteria": [
+        "The hugging-bears visual uses a transparent image format (PNG/WebP with alpha) so the background is visible around/through it.",
+        "The hugging-bears image is displayed with correct sizing and is not stretched or cropped unexpectedly on common mobile widths.",
+        "The message card remains glassmorphism-style (semi-transparent with blur) and the text remains clearly readable against the background image.",
+        "No user-provided message text characters/emojis/punctuation are modified."
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Update the Phase 1 hero teddy illustration to depict a single teddy bear holding a heart in its hands with the words \"i love you\" written on the heart, and ensure it displays crisply and centered as the hero image.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-9"
+        ],
+        "quotes": [
+          "Hero Image: A cute, high-quality illustration of a single teddy bear holding i love you written heart in hands."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Phase 1 continues to show the heading text exactly \"Happy Hug Day My Love\" and the button text exactly \"Hug me! Pop me! 🧸\".",
+        "The hero image depicts a single teddy bear holding a heart with \"i love you\" written on it.",
+        "The hero image renders at the existing hero placement without distortion and remains mobile-friendly."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (Shadcn components); only compose and style them from app/components.",
+    "Do not modify immutable hook files (frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
+    "Keep the app frontend-only for this experience; do not add backend dependencies or require login.",
+    "Preserve the Phase 2 message text exactly as provided (no character changes)."
+  ],
+  "nonGoals": [
+    "Adding new backend canister methods or persistence.",
+    "Adding third-party auth providers beyond Internet Identity.",
+    "Adding real-time features (WebSockets/chat) or external media hosting."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": [
+      "Make the teddy bear hold a heart with the words \"i love you\" written on it (teddy-hero.dim_1400x900.png > teddy-hero-heart-ily.dim_1400x900.png)",
+      "Create a transparent (alpha) version of the hugging bears illustration suitable for overlay on a photo background (hugging-bears.dim_1400x900.png > hugging-bears-transparent.dim_1400x900.png)"
+    ]
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Fix Reveal background + audio reliability, and update teddy/bears visuals with transparent assets",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Ensure Phase 2 (Reveal) shows the uploaded background image (photo4.jpg) clearly using the correct existing asset path and unobscuring overlay treatment.",
+      "acceptanceCriteria": [
+        "After clicking the Phase 1 button, the Reveal view displays the background image (photo4.jpg) behind the overlay and content on both mobile and desktop.",
+        "The background image request returns HTTP 200 in the browser network panel and is not blocked by an incorrect path.",
+        "The background image is not visually obscured by overlays; the overlay (if present) still allows the background to be recognizable."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HugDayExperience.tsx",
+          "operation": "modify",
+          "description": "Fix Reveal background rendering by referencing the correct static asset URL for photo4.jpg (ensuring it resolves to HTTP 200) and adjust overlay opacity/blur so the background remains clearly recognizable behind content."
+        },
+        {
+          "path": "frontend/public/assets/photo4.jpg",
+          "operation": "create",
+          "description": "Add/ensure the uploaded background image is available as a static public asset at frontend/public/assets/photo4.jpg so the Reveal background request resolves with HTTP 200."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Make Phase 2 (Reveal) audio reliably load and start on button click, with a visible manual play fallback when autoplay is blocked, while preserving looping and existing mute/play toggle behavior.",
+      "acceptanceCriteria": [
+        "On button click, the app attempts to play the audio and sets the UI state to reflect playback when successful.",
+        "If autoplay is blocked, a visible play control appears and successfully starts playback on user interaction.",
+        "The audio file request returns HTTP 200 in the browser network panel (no 404/failed load due to filename/path issues).",
+        "Audio continues looping as intended, and the existing mute/play toggle continues to work after playback starts."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HugDayExperience.tsx",
+          "operation": "modify",
+          "description": "Harden audio initialization + playback: ensure the audio src matches the public asset path, set loop, attach play/pause/error listeners to keep UI state accurate, attempt playback on Phase 1 button click, and keep the manual play fallback visible and functional when autoplay is blocked."
+        },
+        {
+          "path": "frontend/public/assets/audio/KAUN TUJHE Lyrical Video _ Armaan Malik _ M.S. DHONI -THE UNTOLD STORY _ T-Series(M4A_128K).m4a",
+          "operation": "create",
+          "description": "Add/ensure the uploaded romantic song is available as a static public asset at the exact path used by the app so the request resolves with HTTP 200."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Update Phase 2 visuals to use a transparent hugging-bears asset and refine glassmorphism so both the image and message remain semi-transparent but readable over the photo background without altering message text.",
+      "acceptanceCriteria": [
+        "The hugging-bears visual uses a transparent image format (PNG/WebP with alpha) so the background is visible around/through it.",
+        "The hugging-bears image is displayed with correct sizing and is not stretched or cropped unexpectedly on common mobile widths.",
+        "The message card remains glassmorphism-style (semi-transparent with blur) and the text remains clearly readable against the background image.",
+        "No user-provided message text characters/emojis/punctuation are modified."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HugDayExperience.tsx",
+          "operation": "modify",
+          "description": "Swap Reveal hugging-bears image to the transparent alpha asset and adjust sizing/container classes for mobile-friendly containment; tune glassmorphism card transparency/blur/contrast for readability while preserving the message text exactly (no character changes)."
+        },
+        {
+          "path": "frontend/public/assets/generated/hugging-bears-transparent.dim_1400x900.png",
+          "operation": "create",
+          "description": "Add the generated transparent (alpha) hugging-bears image at frontend/public/assets/generated/hugging-bears-transparent.dim_1400x900.png and wire it in the Reveal view."
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Replace Phase 1 hero teddy image with a single teddy holding a heart reading \"i love you\", keeping it crisp, centered, and mobile-friendly while preserving the exact heading and button text.",
+      "acceptanceCriteria": [
+        "Phase 1 continues to show the heading text exactly \"Happy Hug Day My Love\" and the button text exactly \"Hug me! Pop me! 🧸\".",
+        "The hero image depicts a single teddy bear holding a heart with \"i love you\" written on it.",
+        "The hero image renders at the existing hero placement without distortion and remains mobile-friendly."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/HugDayExperience.tsx",
+          "operation": "modify",
+          "description": "Update Phase 1 hero image source to the new teddy-heart illustration asset and ensure the existing hero container remains centered, crisp, and uses object-contain to prevent distortion; keep heading/button strings exactly unchanged."
+        },
+        {
+          "path": "frontend/public/assets/generated/teddy-hero-heart-ily.dim_1400x900.png",
+          "operation": "create",
+          "description": "Add the generated hero image at frontend/public/assets/generated/teddy-hero-heart-ily.dim_1400x900.png and wire it into the Phase 1 hero slot."
+        }
+      ]
+    }
+  ]
+}

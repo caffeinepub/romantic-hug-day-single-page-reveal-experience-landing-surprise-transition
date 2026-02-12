@@ -1,0 +1,167 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Create a romantic, interactive single-page Hug Day website with a landing view and a button-triggered surprise reveal (custom background image + uploaded audio, hugging bears visual, and a glass-morphism message card) using a soft pastel romantic theme and mobile-friendly design.",
+  "architectural_notes": [
+    "Single-page interactive site with two phases (landing + reveal) transitioned via button click.",
+    "Use user-provided assets: custom background image for Phase 2 and uploaded romantic audio to autoplay on reveal (subject to browser autoplay rules).",
+    "Use glass-morphism (semi-transparent white) card styling and lightweight animations (e.g., pop-in) for a 'magical' feel.",
+    "Mobile-first responsive design; elegant cursive heading typography and soft romantic pastel palette.",
+    "Phase 2 assets (hugging bears + glass card) should use transparency-aware formats/styling (e.g., PNG/WebP with alpha; readable text contrast over variable backgrounds).",
+    "Background image in Phase 2 should be applied with proper sizing/cropping (e.g., CSS background-size: cover; background-position: center) to 'show properly' across devices."
+  ],
+  "known_issues": [
+    "Reported: Uploaded romantic song not playing on reveal.",
+    "Reported: Uploaded background image not visible in Phase 2 reveal."
+  ],
+  "isFixRequest": true,
+  "imageRequirements": "## Edit Images\n- Make the teddy bear hold a heart with the words \"i love you\" written on it (teddy-hero.dim_1400x900.png > teddy-hero-heart-ily.dim_1400x900.png)\n- Create a transparent (alpha) version of the hugging bears illustration suitable for overlay on a photo background (hugging-bears.dim_1400x900.png > hugging-bears-transparent.dim_1400x900.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-single-page-mobile-friendly-hug-day-experience-with-two-phases-phase-1-landing-phase-2-reveal-controlled-entirely-on-the-frontend-without-requiring-login-or-backend-data",
+      "title": "Create a single-page, mobile-friendly Hug Day experience with two phases (Phase 1 landing, Phase 2 reveal) controlled entirely on the frontend without requiring login or backend data.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-phase-1-landing-view-with-1-main-heading-text-exactly-happy-hug-day-my-love-2-a-cute-high-quality-single-teddy-bear-illustration-as-the-hero-image-3-a-prominent-rounded-center-button-labeled-exactly-hug-me-pop-me",
+      "title": "Implement Phase 1 (Landing View) with: (1) main heading text exactly: \"Happy Hug Day My Love\"; (2) a cute, high-quality single teddy bear illustration as the hero image; (3) a prominent rounded center button labeled exactly: \"Hug me! Pop me! 🧸\".",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-on-button-click-transition-smoothly-and-magically-from-phase-1-to-phase-2-reveal-using-simple-animations-including-a-pop-in-effect-for-the-message-card",
+      "title": "On button click, transition smoothly and \"magically\" from Phase 1 to Phase 2 (Reveal) using simple animations, including a pop-in effect for the message card.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-phase-2-reveal-background-change-to-use-the-user-uploaded-image-file-photo4-jpg-as-the-background",
+      "title": "Implement Phase 2 (Reveal) background change to use the user-uploaded image file photo4.jpg as the background.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-phase-2-start-playing-the-user-uploaded-romantic-song-automatically-after-the-button-click-with-a-clear-fallback-ui-if-autoplay-is-blocked-by-the-browser-e-g-show-a-play-control",
+      "title": "In Phase 2, start playing the user-uploaded romantic song automatically after the button click, with a clear fallback UI if autoplay is blocked by the browser (e.g., show a play control).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-phase-2-display-a-cute-animation-or-image-depicting-a-male-and-female-teddy-bear-hugging",
+      "title": "In Phase 2, display a cute animation or image depicting a male and female teddy bear hugging.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-phase-2-render-a-glassmorphism-style-card-semi-transparent-white-with-blur-containing-the-provided-message-text-exactly-as-given-do-not-alter-characters-punctuation-quotes-or-emojis",
+      "title": "In Phase 2, render a glassmorphism-style card (semi-transparent white with blur) containing the provided message text exactly as given (do not alter characters, punctuation, quotes, or emojis).",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-consistent-romantic-visual-theme-across-both-phases-soft-pastel-pink-white-red-palette-elegant-cursive-typography-for-headings-and-a-cohesive-layout-style-that-feels-like-a-romantic-greeting-card-avoid-blue-purple-as-primary-colors",
+      "title": "Apply a consistent romantic visual theme across both phases: soft pastel pink/white/red palette, elegant cursive typography for headings, and a cohesive layout style that feels like a romantic greeting card (avoid blue/purple as primary colors).",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-required-static-assets-to-the-frontend-build-include-generated-illustrations-in-frontend-public-assets-generated-and-reference-the-uploaded-background-image-photo4-jpg-as-a-static-asset-no-backend-image-serving",
+      "title": "Add required static assets to the frontend build: include generated illustrations in frontend/public/assets/generated and reference the uploaded background image photo4.jpg as a static asset (no backend image serving).",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-phase-2-reveal-background-image-rendering-so-the-user-uploaded-background-is-clearly-visible-after-the-button-click-using-the-existing-asset-path-for-the-uploaded-image-photo4-jpg",
+      "title": "Fix Phase 2 (Reveal) background image rendering so the user-uploaded background is clearly visible after the button click, using the existing asset path for the uploaded image (photo4.jpg).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-phase-2-reveal-audio-playback-so-the-user-uploaded-romantic-song-reliably-loads-and-starts-playing-immediately-after-the-button-click-and-provide-a-clear-manual-play-fallback-if-autoplay-is-blocked",
+      "title": "Fix Phase 2 (Reveal) audio playback so the user-uploaded romantic song reliably loads and starts playing immediately after the button click, and provide a clear manual play fallback if autoplay is blocked.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-phase-2-visuals-to-use-a-transparent-alpha-hugging-bears-asset-and-ensure-both-the-hugging-bears-visual-and-the-glassmorphism-message-card-remain-semi-transparent-yet-clearly-readable-over-the-background-i-e-transparent-but-still-easy-to-see",
+      "title": "Update Phase 2 visuals to use a transparent (alpha) hugging-bears asset and ensure both the hugging-bears visual and the glassmorphism message card remain semi-transparent yet clearly readable over the background (i.e., transparent but still easy to see).",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-phase-1-hero-teddy-illustration-to-depict-a-single-teddy-bear-holding-a-heart-in-its-hands-with-the-words-i-love-you-written-on-the-heart-and-ensure-it-displays-crisply-and-centered-as-the-hero-image",
+      "title": "Update the Phase 1 hero teddy illustration to depict a single teddy bear holding a heart in its hands with the words \"i love you\" written on the heart, and ensure it displays crisply and centered as the hero image.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build Phase 1 landing view with heading 'Happy Hug Day My Love', single teddy bear hero illustration, and prominent rounded center button labeled 'Hug me! Pop me! 🧸'.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement Phase 2 reveal on button click with smooth magical transition, switching background to user-uploaded image and starting user-uploaded romantic audio.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Show hugging male/female bear animation or image in Phase 2 and display a glass-morphism semi-transparent message card with the exact provided text, using simple pop-in animation.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Apply soft romantic color palette (pastel pinks/whites/reds), elegant cursive typography for headings, and ensure mobile-friendly responsive layout.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Update Phase 1 hero illustration to be a single teddy bear holding a heart with 'i love you' written on it, matching the romantic theme.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Ensure Phase 2 hugging-bears visual is a transparent (PNG/WebP) image/animation and the glassmorphism message card remains transparent yet clearly readable over the background.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Romantic Hug Day single-page reveal experience (landing + surprise transition)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

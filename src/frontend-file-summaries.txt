@@ -1,0 +1,7 @@
+{
+  "frontend/src/App.tsx": "Main app component that renders the HugDayExperience component as the single-page application entry point.",
+  "frontend/src/components/HugDayExperience.tsx": "Complete two-phase Hug Day experience with landing view (teddy with \"i love you\" heart + button) and reveal view (photo4.jpg background, audio playback with fallback controls, transparent hugging bears, and glassmorphism message card) with improved audio event handling, lighter overlay for better background visibility, and mobile-responsive design.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file as no backend queries are needed for this frontend-only romantic experience.",
+  "frontend/src/index.css": "Global styles with romantic pastel pink/rose/red OKLCH color palette, Dancing Script cursive and Playfair Display serif fonts, and custom animations (fade-in, scale-in, pop-in, float, pulse-soft, bounce-in) for magical transitions.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with romantic color tokens, cursive and serif font families, increased border radius, and custom animation support for the Hug Day theme."
+}
